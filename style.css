@@ -1,0 +1,298 @@
+
+
+body {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Header */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #52008E 0%, #8E7DE3 25%, #4A74F3 50%, #6C8BE0 75%, #28B463 100%);
+    color: white;
+    padding: 15px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fixed-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 550;
+}
+
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding-top: 90px; /* Offset for fixed header */
+    padding-bottom: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Search Bar */
+.search-container {
+    width: 100%;
+    margin-bottom: 30px;
+    position: sticky;
+    top: 75px; /* Adjust based on header height + desired spacing */
+    background-color: #f0f2f5;
+    padding: 10px 0;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+   
+}
+
+#searchInput {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.1em;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput:focus {
+    border-color: #c0c1c4; /* L'Oréal lighter blue */
+    box-shadow: 0 0 10px rgba(74, 116, 243, 0.2);
+}
+
+/* Cards Grid - MODIFIED for single column */
+.cards-grid {
+    display: grid;
+    /* Changed to a single column that takes full width */
+    grid-template-columns: 1fr;
+    gap: 30px; /* Still maintains vertical spacing between cards */
+    width: 100%;
+     
+}
+
+/* Individual Card */
+.card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For fixed title */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Card Header (fixed title) */
+.card-header {
+    padding: 15px 20px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Make title sticky */
+    top: 0; /* Stick to the top of the card */
+    z-index: 1; /* Ensure it stays above content */
+    background-color: inherit; /* Inherit card background for seamless look */
+    transition: background-color 0.3s ease;
+  
+}
+
+
+
+.card.developer .card-header {
+    
+    border-width: 4.5px; /* Define el grosor de tu borde */
+    border-style: solid; /* Es necesario para que border-image funcione */
+    border-image: linear-gradient(to right, #52008E, #4A74F3) 1; /* Tu degradado de morado a azul */
+    padding: 10px;
+      border-radius: 50%;
+    
+}
+
+
+
+.card.analytics .card-header {
+      border-width: 4px; /* Define el grosor de tu borde */
+    border-style: solid; /* Es necesario para que border-image funcione */
+    border-image: linear-gradient(to right, #28B463 0%, #4A74F3 100%) 1; 
+    padding: 10px;
+}
+
+.card-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+}
+
+.card-toggle-icon {
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+}
+
+.card.expanded .card-toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Card Content (collapsible) */
+.card-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+    padding: 0 20px; /* Initial padding, will expand */
+}
+
+.card.expanded .card-content {
+    max-height: 1000px; /* Sufficiently large value */
+    padding: 15px 20px;
+}
+
+.card-content p {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+    color: #555;
+    white-space: pre-wrap; /* Preserve line breaks */
+}
+
+.card-content strong {
+    color: #2f2f30;
+}
+
+/* Embedded HTML Section */
+.embedded-html-section {
+    border-top: 1px dashed #ddd;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+.embedded-html-section button {
+    background: linear-gradient(to right, #52008E 0%,  #6C8BE0 75%);
+    width: 120px;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
+}
+
+.embedded-html-section button:hover {
+    transform: translateY(-2px);
+}
+
+.embedded-html-wrapper {
+    display: none; /* Hidden by default */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fdfdfd;
+    overflow-x: auto; /* Single scrollbar for overflow */
+    max-height: 400px; /* Limit height if content is very large */
+    /* Ensure content adjusts to full width of wrapper */
+    width: 100%;
+}
+
+.embedded-html-wrapper.visible {
+    display: block;
+}
+
+.company-logo img {
+    height: 80px; /* Adjust size as needed */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive Adjustments (still apply, but grid-template-columns: 1fr handles the main layout) */
+@media (max-width: 768px) {
+    .fixed-header h1 {
+        font-size: 1.5em;
+    }
+
+    .main-content {
+        padding-top: 75px;
+        width: 95%;
+    }
+
+    .search-container {
+        top: 60px;
+    }
+
+    #searchInput {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+
+    /* .cards-grid is already 1fr, no need to override */
+    .cards-grid {
+        gap: 20px;
+    }
+
+    .card-header h2 {
+        font-size: 1.1em;
+    }
+
+    .card-content {
+        padding: 0 15px;
+    }
+
+    .card.expanded .card-content {
+        padding: 10px 15px;
+    }
+
+    .embedded-html-section button {
+        padding: 8px 12px;
+        font-size: 0.85em;
+    }
+    .company-logo img {
+    height: 20px; /* Adjust size as needed */
+}
+}
+
+/* Company Logo */
+.company-logo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: -9;
+}
+
+
+
+.company-logo img:hover {
+    opacity: 1;
+}

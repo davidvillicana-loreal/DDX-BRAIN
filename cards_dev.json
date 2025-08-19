@@ -1,0 +1,23 @@
+[
+  {
+    "type": "developer",
+    "Query/Job": "Developer Query Example: Database Optimization",
+    "Description": "This is a detailed description for a developer-focused query regarding database performance tuning.\nIt supports multiple lines and formatted text to explain the process of indexing and query refactoring.",
+    "Filters or Business Rules": "Filter: active development branches, Rule: apply only to non-critical read operations during off-peak hours.",
+    "Embeded HTML": "<div style=\"font-family: 'Poppins', sans-serif; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;\"><h3 style=\"color: #2649B2;\">SQL Optimization Snippet</h3><pre style=\"background-color: #e0e6f7; padding: 10px; border-radius: 5px; overflow-x: auto; color: #333;\"><code>\nSELECT\n    u.id,\n    u.name,\n    COUNT(o.id) AS total_orders\nFROM\n    users u\nJOIN\n    orders o ON u.id = o.user_id\nWHERE\n    o.order_date >= '2023-01-01'\nGROUP BY\n    u.id, u.name\nHAVING\n    COUNT(o.id) > 10\nORDER BY\n    total_orders DESC;\n                    </code></pre><p style=\"font-size: 0.9em; color: #666;\">This SQL query retrieves users with more than 10 orders placed since January 1, 2023, ordered by total orders descending.</p><p style=\"font-size: 0.9em; color: #666;\"><strong>Note:</strong> Ensure appropriate indexes are in place on <code>users.id</code> and <code>orders.user_id, order_date</code> for optimal performance.</p></div>"
+  },
+  {
+    "type": "developer",
+    "Query/Job": "Another Dev Task: API Integration Guide",
+    "Description": "Comprehensive guide for integrating with our new external API service.\nCovers authentication, request/response formats, and common error handling.",
+    "Filters or Business Rules": "Rule: Only for production environment after successful staging deployment and approval.",
+    "Embeded HTML": "<div style=\"font-family: 'Poppins', sans-serif; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;\"><h3 style=\"color: #2649B2;\">API Endpoint Example (JSON)</h3><pre style=\"background-color: #e0e6f7; padding: 10px; border-radius: 5px; overflow-x: auto; color: #333;\"><code>\n{\n    \"endpoint\": \"/api/v1/products/{id}\",\n    \"method\": \"GET\",\n    \"headers\": {\n        \"Authorization\": \"Bearer YOUR_ACCESS_TOKEN\",\n        \"Content-Type\": \"application/json\"\n    },\n    \"response_example\": {\n        \"id\": \"prod_123\",\n        \"name\": \"Luxury Lipstick\",\n        \"price\": 35.00,\n        \"currency\": \"USD\",\n        \"in_stock\": true\n    }\n}\n                    </code></pre><p style=\"font-size: 0.9em; color: #666;\">This snippet illustrates a typical GET request for product details from the API.</p></div>"
+  },
+  {
+    "type": "developer",
+    "Query/Job": "Infrastructure as Code Template",
+    "Description": "Standardized Terraform template for deploying a new microservice on AWS.\nIncludes VPC, EC2, RDS, and Load Balancer configurations.",
+    "Filters or Business Rules": "Filter: us-east-1 region, Rule: follow least privilege access principles.",
+    "Embeded HTML": "<div style=\"font-family: 'Poppins', sans-serif; padding: 15px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;\"><h3 style=\"color: #2649B2;\">Terraform EC2 Resource</h3><pre style=\"background-color: #e0e6f7; padding: 10px; border-radius: 5px; overflow-x: auto; color: #333;\"><code>\nresource \"aws_instance\" \"web_server\" {\n  ami           = \"ami-0abcdef1234567890\"\n  instance_type = \"t2.micro\"\n  tags = {\n    Name = \"WebServer\"\n  }\n}\n                    </code></pre><p style=\"font-size: 0.9em; color: #666;\">A basic Terraform resource block for an AWS EC2 instance.</p></div>"
+  }
+]
